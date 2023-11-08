@@ -1,4 +1,4 @@
-package cuong.run.entity;
+package campaign.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -28,6 +28,6 @@ public class Donate {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "campaign_id")
-    private cuong.run.entity.Campaign campaign;
+    private Campaign campaign;
 
 }

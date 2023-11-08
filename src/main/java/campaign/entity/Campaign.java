@@ -1,4 +1,4 @@
-package cuong.run.entity;
+package campaign.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -50,6 +50,6 @@ public class Campaign {
     private String truong;
 
     @OneToMany(mappedBy = "campaign")
-    private Set<cuong.run.entity.Donate> donates = new LinkedHashSet<>();
+    private Set<Donate> donates = new LinkedHashSet<>();
 
 }
