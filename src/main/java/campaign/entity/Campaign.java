@@ -1,17 +1,19 @@
 package campaign.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "campaign")
 public class Campaign {
     @Id
@@ -25,17 +27,13 @@ public class Campaign {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "author")
-    private String author;
 
     @Column(name = "start_time")
-    private Instant startTime;
+    private LocalDate startTime;
 
     @Column(name = "end_time")
-    private Instant endTime;
+    private LocalDate endTime;
 
-    @Column(name = "funded")
-    private BigDecimal funded;
 
     @Column(name = "total")
     private BigDecimal total;
@@ -43,11 +41,6 @@ public class Campaign {
     @Column(name = "image")
     private String image;
 
-    @Column(name = "last_donation")
-    private String lastDonation;
-
-    @Column(name = "truong")
-    private String truong;
 
     @OneToMany(mappedBy = "campaign")
     private Set<Donate> donates = new LinkedHashSet<>();

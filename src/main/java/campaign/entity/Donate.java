@@ -3,6 +3,8 @@ package campaign.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -11,6 +13,7 @@ import java.time.Instant;
 @Setter
 @Entity
 @Table(name = "donate")
+@EntityListeners(AuditingEntityListener.class)
 public class Donate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +23,7 @@ public class Donate {
     @Column(name = "sol")
     private BigDecimal sol;
 
+    @CreatedDate
     @Column(name = "date_donate")
     private Instant dateDonate;
 
