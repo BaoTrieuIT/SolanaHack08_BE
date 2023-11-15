@@ -32,6 +32,7 @@ public class DonateServiceImpl implements DonateService {
     @Transactional
     @Override
     public void donate(DonateRequest donateRequest) {
+
         Donate donate = campaignMap.requestToEntity(donateRequest);
         Campaign campaign = Campaign.builder().id(donateRequest.getId_campaign()).build();
         donate.setCampaign(campaign);

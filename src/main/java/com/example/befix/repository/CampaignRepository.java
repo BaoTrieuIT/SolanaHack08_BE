@@ -27,7 +27,7 @@ public interface CampaignRepository extends JpaRepository<Campaign, Long> {
     @Query("""
         update Campaign c
         set c.total = c.total + :total
-        where c.id = :id
+        where c.id = :id    
     """)
     void donate(Long id, BigDecimal total);
 

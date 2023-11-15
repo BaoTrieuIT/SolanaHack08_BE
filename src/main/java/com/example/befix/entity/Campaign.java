@@ -40,6 +40,8 @@ public class Campaign {
 
     @Column(name = "image")
     private String image;
+    @Column(name = "max")
+    private BigDecimal max;
 
 
     @OneToMany(mappedBy = "campaign")

@@ -9,6 +9,7 @@ import com.example.befix.request.CampaignRequest;
 import com.example.befix.request.PageRequest;
 import com.example.befix.service.CampaignService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -25,24 +26,25 @@ public class CampaignServiceImpl implements CampaignService {
     public CampaignDto create(CampaignRequest campaignRequest) {
         Optional<Campaign> campaignOptional = campaignRepository.findById(campaignRequest.getId());
         Campaign campaign = campaignMap.requestToEntity(campaignRequest);
-        if(campaignOptional.isPresent()){
+        if (campaignOptional.isPresent()) {
             campaign.setTotal(campaignOptional.get().getTotal());
-        }else{
+        } else {
             campaign.setTotal(BigDecimal.ZERO);
         }
         Campaign campaignSave = campaignRepository.save(campaign);
         return campaignMap.campaignDto(campaignSave);
     }
 
+    @Cacheable(value = "findAllWhere")
     @Override
     public List<CampaignDto> findAllWhere(PageRequest pageRequest) {
-        List<Campaign> campaigns = campaignRepository.getAllWhere(org.springframework.data.domain.PageRequest.of(pageRequest.getPage()-1, pageRequest.getSize()));
+        List<Campaign> campaigns = campaignRepository.getAllWhere(org.springframework.data.domain.PageRequest.of(pageRequest.getPage() - 1, pageRequest.getSize()));
         return campaignMap.campaignDos(campaigns);
     }
 
     @Override
     public List<CampaignDto> findAll(PageRequest pageRequest) {
-        List<Campaign> campaigns = campaignRepository.getAll(org.springframework.data.domain.PageRequest.of(pageRequest.getPage()-1, pageRequest.getSize()));
+        List<Campaign> campaigns = campaignRepository.getAll(org.springframework.data.domain.PageRequest.of(pageRequest.getPage() - 1, pageRequest.getSize()));
         return campaignMap.campaignDos(campaigns);
     }
 

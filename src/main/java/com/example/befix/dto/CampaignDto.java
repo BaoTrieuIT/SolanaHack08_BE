@@ -22,8 +22,9 @@ public class CampaignDto {
 
     private LocalDate endTime;
 
-
     private BigDecimal total;
+
+    private BigDecimal max;
 
     private String image;
 
