@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class CampaignRequest {
     //nếu không truyền là create. Có id là update
     private Long id;
-
+    
 
     @NotBlank(message = "Title not blank")
     @Length(min = 5, message = "Enter a Title that must be longer than 5 characters")

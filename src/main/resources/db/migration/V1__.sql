@@ -6,6 +6,7 @@ CREATE TABLE campaign
     start_time  TIMESTAMP WITHOUT TIME ZONE,
     end_time    TIMESTAMP WITHOUT TIME ZONE,
     total       DECIMAL,
+    max         DECIMAL,
     image       text,
     CONSTRAINT pk_campaign PRIMARY KEY (id)
 );

@@ -1,4 +1,4 @@
-package campaign.response;
+package com.example.befix.response;
 
 import lombok.Builder;
 
