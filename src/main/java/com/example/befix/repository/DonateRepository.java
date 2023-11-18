@@ -12,11 +12,11 @@ public interface DonateRepository extends JpaRepository<Donate, Long> {
         select d from Donate  d
         where d.publicKey = :publickey
     """)
-    List<Donate> userGetAll(String publickey, Pageable pageable);
+    List<Donate> userGetAll(String publickey);
 
     @Query("""
         select d from Donate  d
         where d.campaign.id = :id
     """)
-    List<Donate> campaignGetAllDonate(Long id, Pageable pageable);
+    List<Donate> campaignGetAllDonate(Long id);
 }
