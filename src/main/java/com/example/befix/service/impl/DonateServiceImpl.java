@@ -53,15 +53,13 @@ public class DonateServiceImpl implements DonateService {
 
     @Override
     public List<DonateDto> userGetAll(PublicKeyRequest publicKeyRequest) {
-        Pageable pageable = PageRequest.of(publicKeyRequest.getPageRequest().getPage()-1, publicKeyRequest.getPageRequest().getSize());
-        List<Donate> donates = donateRepository.userGetAll(publicKeyRequest.getPublickey(),pageable);
+        List<Donate> donates = donateRepository.userGetAll(publicKeyRequest.getPublickey());
         return campaignMap.donateDos(donates);
     }
 
     @Override
     public List<DonateDto> campaignGetAllDonate(CampaignDonateRequest campaignDonateRequest) {
-        Pageable pageable = PageRequest.of(campaignDonateRequest.getPageRequest().getPage()-1, campaignDonateRequest.getPageRequest().getSize());
-        List<Donate> donates = donateRepository.campaignGetAllDonate(campaignDonateRequest.getId(),pageable);
+        List<Donate> donates = donateRepository.campaignGetAllDonate(campaignDonateRequest.getId());
         return campaignMap.donateDos(donates);
     }
 }

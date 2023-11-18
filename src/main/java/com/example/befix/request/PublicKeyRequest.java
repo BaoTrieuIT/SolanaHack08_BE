@@ -7,6 +7,4 @@ import lombok.Setter;
 @Setter
 public class PublicKeyRequest {
     String publickey;
-
-    PageRequest pageRequest;
 }

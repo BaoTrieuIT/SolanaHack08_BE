@@ -7,6 +7,4 @@ import lombok.Setter;
 @Setter
 public class CampaignDonateRequest {
     Long id;
-
-    PageRequest pageRequest;
 }
